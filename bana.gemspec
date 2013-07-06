@@ -1,7 +1,7 @@
 #!/usr/bin/env gem build
 # encoding: utf-8
 
-require File.expand_path("lib/bana/version.rb", __FILE__)
+require File.expand_path("../lib/bana/version.rb", __FILE__)
 
 Gem::Specification.new do |s|
   s.name = "bana"
