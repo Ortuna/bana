@@ -3,8 +3,8 @@ require 'helper'
 class TestManifest < MiniTest::Test
 
   def setup
-    @fixture_path  = "../../fixtures/simple"
-    @manifest_path = "#{@fixture_path}/manifest.yml"
+    @fixture_path  = File.expand_path("../../fixtures/simple", __FILE__)
+    @manifest_path = File.expand_path("#{@fixture_path}/manifest.yml", __FILE__)
   end
 
   def test_raise_on_unkown_path
@@ -13,31 +13,27 @@ class TestManifest < MiniTest::Test
   end
 
   def test_no_raise_on_known_path
-    path = File.expand_path(@manifest_path, __FILE__)
-    Bana::Manifest.new(path)
+    Bana::Manifest.new(@manifest_path)
   end
 
   def test_can_query_manifest_path
-    path     = File.expand_path(@manifest_path, __FILE__)
-    manifest = Bana::Manifest.new(path)
-    assert_equal(path, manifest.path)
+    manifest = Bana::Manifest.new(@manifest_path)
+    assert_equal @manifest_path, manifest.path
   end
 
   def test_can_query_manifest
-    path     = File.expand_path(@manifest_path, __FILE__)
-    manifest = Bana::Manifest.new(path)
+    manifest = Bana::Manifest.new(@manifest_path)
     refute_nil manifest['toc.md']
   end
 
   def test_boom_on_invalid_manifest
-    path     = File.expand_path("#{@fixture_path}/invalid.yml", __FILE__)
+    path = @fixture_path + "/invalid.yml"
     assert_raises(Bana::InvalidManifest) { Bana::Manifest.new(path) }
   end
 
   #private stuff delete if broken
   def test_load_yaml
-    path     = File.expand_path(@manifest_path, __FILE__)
-    manifest = Bana::Manifest.new(path)
+    manifest = Bana::Manifest.new(@manifest_path)
     hash     = manifest.send(:load_yaml)
     assert_equal 'Table of contents', hash["toc.md"]
   end
