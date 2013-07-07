@@ -9,7 +9,7 @@ module Bana
     def git_to_pdf(output_file)
       clone_repo
       Bana::Builder.new(path: tmp_path).create_pdf(output_file)
-      clean_up_repo tmp_path
+      clean_up_repo
     end
 
     private
@@ -21,8 +21,8 @@ module Bana
       Bana::Git.new(remote_repo, tmp_path).clone
     end
 
-    def clean_up_repo(repo_path)
-      FileUtils.rm_rf repo_path
+    def clean_up_repo
+      FileUtils.rm_rf tmp_path
     end
 
   end
