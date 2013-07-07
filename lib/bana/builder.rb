@@ -1,6 +1,6 @@
 module Bana
   class Builder
-    attr_reader :path, :manifest
+    attr_reader :path, :manifest_file
 
     def initialize(options = {})
       options = default_options.merge(options)
@@ -10,7 +10,7 @@ module Bana
     private
 
     def default_options
-      {manifest: 'manifest.yml'}
+      { manifest_file: 'manifest.yml' }
     end
 
     ##

@@ -1,9 +1,6 @@
 require 'yaml'
 
 module Bana
-  class FileNotFound    < Exception; end
-  class InvalidManifest < Exception; end
-
   class Manifest
     attr_reader :path, :manifest
 
