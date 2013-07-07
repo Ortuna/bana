@@ -19,4 +19,9 @@ describe Bana::Book do
     Bana::Book.new(@remote_repo).git_to_pdf(@output)
     assert true, File.exists?(@output)
   end
+
+  it 'can build progit from source' do
+    Bana::Book.new('git@github.com:Ortuna/progit-bana.git').git_to_pdf(@output)
+    assert true, File.exists?(@output)
+  end
 end
