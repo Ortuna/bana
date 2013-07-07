@@ -20,7 +20,7 @@ module Bana
 
       def read_files
         String.new.tap do |content|
-          from.each { |f| content << File.read(f) << "\n" }
+          from.each { |f| content << File.read(f) << "\\newpage\n" }
         end
       end
 
