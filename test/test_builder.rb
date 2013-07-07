@@ -1,9 +1,9 @@
 require 'helper'
 
-class TestBuilder < MiniTest::Unit::TestCase
-  
+class TestBuilder < MiniTest::Test
+
   def test_presence
-    refute_equal nil, @builder
+    refute_equal nil, Bana::Builder.new 
   end
 
   def test_default_options

@@ -1,6 +1,6 @@
 require 'helper'
 
-class TestManifest < MiniTest::Unit::TestCase
+class TestManifest < MiniTest::Test
 
   def test_raise_on_unkown_path
     path = File.expand_path("../fixtures/simple/unkown_path.yml", __FILE__)

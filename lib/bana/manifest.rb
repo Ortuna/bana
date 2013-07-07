@@ -8,6 +8,7 @@ module Bana
     attr_reader :path, :manifest
 
     ##
+    # 
     # @options
     #  path - Path to the manifest yml file
     def initialize(path)
