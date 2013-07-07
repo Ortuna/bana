@@ -7,6 +7,10 @@ module Bana
       load_manifest
     end
 
+    def create_pdf(output_path)
+      Bana::Converters::Md.new(manifest_files, output_path)
+    end
+
     private
     def load_manifest
       file_path = File.expand_path(path + '/' + manifest_file)
