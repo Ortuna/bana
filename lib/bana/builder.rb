@@ -3,14 +3,22 @@ module Bana
     attr_reader :path, :manifest_file
 
     def initialize(options = {})
-      options = default_options.merge(options)
-      configure_builder options
+      configure_builder default_options.merge(options)
+      load_manifest
     end
 
     private
+    def load_manifest
+      file_path = File.expand_path(path + '/' + manifest_file)
+      @manifest = Bana::Manifest.new(file_path)
+    end
 
     def default_options
       { manifest_file: 'manifest.yml' }
+    end
+
+    def manifest_files
+      @manifest.files
     end
 
     ##

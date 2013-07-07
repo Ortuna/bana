@@ -20,7 +20,26 @@ module Bana
       @manifest[file_path_key]
     end
 
+    ##
+    # returns the full path on disk of the given file
+    def full_path(file_name)
+      full_path = File.expand_path("#{dirname}/#{file_name}")
+      File.exists?(full_path) ? full_path : nil
+    end
+
+    ##
+    # returns an array of full paths to each manifest file
+    def files
+      manifest.inject([]) do |memo, item|
+        memo << full_path(item.first)
+      end
+    end
+
     private
+    def dirname
+      File.dirname(path)
+    end
+
     def read_manifest
       load_yaml.tap { |h| raise Bana::InvalidManifest unless h.kind_of? Hash }
     end

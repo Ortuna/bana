@@ -31,7 +31,24 @@ class TestManifest < MiniTest::Test
     assert_raises(Bana::InvalidManifest) { Bana::Manifest.new(path) }
   end
 
+  def test_full_path
+    manifest = Bana::Manifest.new(@manifest_path)
+    assert_equal @fixture_path + "/toc.md", manifest.full_path('toc.md')
+    assert_equal nil, manifest.full_path('non_existing_file.md')
+  end
+
+  def test_files
+    files    = [@fixture_path + '/toc.md', @fixture_path + '/how_to.md']
+    manifest = Bana::Manifest.new(@manifest_path)
+    assert_equal files, manifest.files
+  end
+
   #private stuff delete if broken
+  def test_dirname
+    manifest = Bana::Manifest.new(@manifest_path)
+    assert_equal @fixture_path, manifest.send(:dirname)
+  end
+
   def test_load_yaml
     manifest = Bana::Manifest.new(@manifest_path)
     hash     = manifest.send(:load_yaml)
