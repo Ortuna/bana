@@ -1,6 +1,7 @@
 require 'bana/version'
 require 'bana/builder'
 require 'bana/manifest'
+require 'bana/git'
 
 require 'bana/converters/md'
 

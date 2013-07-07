@@ -22,5 +22,6 @@ Gem::Specification.new do |s|
   s.rdoc_options  = ["--charset=UTF-8"]
 
   s.add_runtime_dependency("pandoc-ruby", "~> 0.7.0")
+  s.add_runtime_dependency("grit", "~> 2.5")
   s.add_development_dependency("minitest", "~> 5.0")
 end

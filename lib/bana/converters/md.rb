@@ -5,6 +5,9 @@ module Bana
     class Md
       attr_reader :from, :to
 
+      ##
+      # from: array or string of md files
+      # to: output path of compiled PDF
       def initialize(from, to)
         @from   = from.respond_to?(:each) ? from : [from]
         @to     = to
