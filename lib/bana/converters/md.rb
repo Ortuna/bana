@@ -15,12 +15,12 @@ module Bana
 
       private
       def convert
-        PandocRuby.new(read_files, from: :markdown, output: to).convert
+        PandocRuby.new(read_files, from: 'markdown', output: to).convert
       end
 
       def read_files
         String.new.tap do |content|
-          from.each { |f| content << File.read(f) << "\\newpage\n" }
+          from.each { |f| content << File.read(f) << "\\newpage\n\n" }
         end
       end
 
