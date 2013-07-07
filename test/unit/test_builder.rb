@@ -15,13 +15,4 @@ class TestBuilder < MiniTest::Test
     assert_equal 'another_manifest.yml', builder.manifest_file
   end
 
-  #private stuff
-  def test_manifest_files
-    path    = File.expand_path("../../fixtures/simple", __FILE__)
-    builder = Bana::Builder.new(path: path, manifest_file: 'manifest.yml')
-
-    refute_equal nil, builder.send(:manifest_files)
-    refute_equal [], builder.send(:manifest_files)
-  end
-
 end
