@@ -8,6 +8,7 @@ describe Bana::Book do
     @tmp_path    = File.expand_path("../../tmp", __FILE__)
     @output      = "#{@tmp_path}/remote_file.pdf"
 
+    FileUtils.rm_rf '/tmp/git_to_pdf'
     FileUtils.mkdir_p @tmp_path
   end
 
